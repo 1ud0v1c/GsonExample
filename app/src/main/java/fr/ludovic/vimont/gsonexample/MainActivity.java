@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Book> buildBooksList() {
         Type listType = new TypeToken<ArrayList<Book>>(){}.getType();
-        return gson.fromJson(readJSONFile("book.json"), listType);
+        return gson.fromJson(readJSONFile("books.json"), listType);
     }
 
     private String readJSONFile(String filename) {

@@ -7,11 +7,11 @@ public class Book {
     private String genre;
     private int numpages;
     private String release_date;
-    private int cover;
+    private String cover;
  
     public Book() {}
  
-    public Book(String id, String name, String author, String genre, int numpages, String release_date, int cover) {
+    public Book(String id, String name, String author, String genre, int numpages, String release_date, String cover) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -69,11 +69,11 @@ public class Book {
         this.release_date = release_date;
     }
 
-    public int getCover() {
+    public String getCover() {
         return cover;
     }
 
-    public void setCover(int cover) {
+    public void setCover(String cover) {
         this.cover = cover;
     }
 
