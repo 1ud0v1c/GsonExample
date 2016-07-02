@@ -1,8 +1,11 @@
 package fr.ludovic.vimont.gsonexample;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private Gson gson = new Gson();
     private ListView bookList;
+    private FloatingActionButton addBook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
         bookList = (ListView) findViewById(R.id.book_list);
         bookList.setAdapter(new BookAdapter(getApplicationContext(), buildBooksList()));
+
+        addBook = (FloatingActionButton) findViewById(R.id.add_book);
+        addBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddBookActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private ArrayList<Book> buildBooksList() {
@@ -39,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             input_stream.read(b);
             result = new String(b);
         } catch (Exception e) {
-            Log.e("readJSONFile", e.getMessage());
+            Log.e("Error readJSONFile", e.getMessage());
         }
         return result;
     }

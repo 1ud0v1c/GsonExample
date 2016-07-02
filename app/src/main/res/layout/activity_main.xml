@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CFCFCF"
     tools:context="fr.ludovic.vimont.gsonexample.MainActivity">
 
-    <ListView
-        android:id="@+id/book_list"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:dividerHeight="15dp"
-        android:divider="@null" />
+        android:layout_height="match_parent">
 
+        <ListView
+            android:id="@+id/book_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:dividerHeight="15dp"
+            android:divider="@null" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@drawable/ic_add"
+            app:layout_anchor="@id/book_list"
+            app:layout_anchorGravity="bottom|right|end"
+            app:backgroundTint="@color/colorAccent"
+            app:rippleColor="#FFF" />
+
+    </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>
