@@ -7,16 +7,18 @@ public class Book {
     private String genre;
     private int numpages;
     private String release_date;
+    private int cover;
  
     public Book() {}
  
-    public Book(String id, String name, String author, String genre, int numpages, String release_date) {
+    public Book(String id, String name, String author, String genre, int numpages, String release_date, int cover) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.genre = genre;
         this.numpages = numpages;
         this.release_date = release_date;
+        this.cover = cover;
     }
  
     public String getId() {
@@ -66,7 +68,15 @@ public class Book {
     public void setRelease_date(String release_date) {
         this.release_date = release_date;
     }
- 
+
+    public int getCover() {
+        return cover;
+    }
+
+    public void setCover(int cover) {
+        this.cover = cover;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -75,6 +85,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", genre='" + genre + '\'' +
                 ", numpages=" + numpages +
+                ", cover=" + cover +
                 ", release_date='" + release_date + '\'' +
                 '}';
     }

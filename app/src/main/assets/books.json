@@ -1,0 +1,47 @@
+[
+  {
+    "id": "01fsEF",
+    "name": "1984",
+    "author": "George Orwell",
+    "genre": "Fiction dystopique",
+    "numpages": 376,
+    "release_date": "1949",
+    "cover": "1984.png"
+  },
+  {
+    "id": "3H1J0n",
+    "name": "Le Meilleur des mondes",
+    "author": "Aldous Huxley",
+    "genre": "Science-fiction",
+    "numpages": 285,
+    "release_date": "1932",
+    "cover": "meilleur-des-mondes.jpg"
+  },
+  {
+    "id": "MbtsI7",
+    "name": "Malevil",
+    "author": "Robert Merle",
+    "genre": "Littératures de l'imaginaire",
+    "numpages": 541,
+    "release_date": "1972",
+    "cover": "malevil.jpg"
+  },
+  {
+    "id": "AIqWon",
+    "name": "Fondation",
+    "author": "Isaac Asimov",
+    "genre": "Science-fiction",
+    "numpages": 256,
+    "release_date": "1951",
+    "cover": "fondation.jpg"
+  },
+  {
+    "id": "7d8vm8",
+    "name": "Time Riders, tome 1",
+    "author": "Alex Scarrow",
+    "genre": "Science fiction",
+    "numpages": 428,
+    "release_date": "2012",
+    "cover": "time-riders.jpg"
+  }
+]
