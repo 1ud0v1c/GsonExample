@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private Gson gson = new Gson();
     private ListView bookList;
 
     @Override
@@ -21,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ArrayList<Book> buildBooksList() {
-        ArrayList<Book> books = ;
-        return books;
+        Type listType = new TypeToken<ArrayList<Book>>(){}.getType();
+        return gson.fromJson(readJSONFile("book.json"), listType);
     }
 
-    public String readJSONFile(String filename) {
-        String result = new String();
+    private String readJSONFile(String filename) {
+        String result = "";
         try {
             InputStream input_stream = getAssets().open(filename);
 
