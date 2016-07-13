@@ -59,8 +59,12 @@ public class BookAdapter extends BaseAdapter {
         bookAuthor.setText(currentBook.getAuthor());
 
         final TextView bookDate = (TextView) convertView.findViewById(R.id.book_date);
-        bookDate.setText(currentBook.getRelease_date());
+        bookDate.setText(currentBook.getReleaseDate());
 
         return convertView;
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
     }
 }
