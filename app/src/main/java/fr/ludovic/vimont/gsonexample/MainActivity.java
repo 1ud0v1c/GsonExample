@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Gson gson = new Gson();
-    private ListView bookList;
     private FloatingActionButton addBook;
 
     @Override
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bookList = (ListView) findViewById(R.id.book_list);
+        ListView bookList = (ListView) findViewById(R.id.book_list);
         bookList.setAdapter(new BookAdapter(getApplicationContext(), buildBooksList()));
 
         addBook = (FloatingActionButton) findViewById(R.id.add_book);
@@ -46,10 +45,9 @@ public class MainActivity extends AppCompatActivity {
     private String readJSONFile(String filename) {
         String result = "";
         try {
-            InputStream input_stream = getAssets().open(filename);
-
-            byte[] b = new byte[input_stream.available()];
-            input_stream.read(b);
+            InputStream inputStream = getAssets().open(filename);
+            byte[] b = new byte[inputStream.available()];
+            inputStream.read(b);
             result = new String(b);
         } catch (Exception e) {
             Log.e("Error readJSONFile", e.getMessage());

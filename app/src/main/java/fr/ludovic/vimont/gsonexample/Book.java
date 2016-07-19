@@ -6,18 +6,18 @@ public class Book {
     private String author;
     private String genre;
     private int numpages;
-    private String release_date;
+    private String releaseDate;
     private String cover;
  
     public Book() {}
  
-    public Book(String id, String name, String author, String genre, int numpages, String release_date, String cover) {
+    public Book(String id, String name, String author, String genre, int numpages, String releaseDate, String cover) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.genre = genre;
         this.numpages = numpages;
-        this.release_date = release_date;
+        this.releaseDate = releaseDate;
         this.cover = cover;
     }
  
@@ -61,12 +61,12 @@ public class Book {
         this.numpages = numpages;
     }
  
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
  
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getCover() {
@@ -86,7 +86,7 @@ public class Book {
                 ", genre='" + genre + '\'' +
                 ", numpages=" + numpages +
                 ", cover=" + cover +
-                ", release_date='" + release_date + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 ']';
     }
 }
