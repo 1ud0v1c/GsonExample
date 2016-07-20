@@ -63,7 +63,6 @@
 
         <TextView
             android:id="@+id/errors"
-            android:visibility="invisible"
             android:paddingLeft="5dp"
             android:textSize="17sp"
             android:layout_width="match_parent"

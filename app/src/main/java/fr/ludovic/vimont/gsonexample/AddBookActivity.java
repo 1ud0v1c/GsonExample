@@ -1,6 +1,7 @@
 package fr.ludovic.vimont.gsonexample;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Arrays;
-
 public class AddBookActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView errors;
     private String imageURL;
+    private TextView showErrors;
     private Button searchImage, validateBook;
     private EditText bookName, bookAuthor, bookDate;
 
@@ -35,7 +34,7 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
         validateBook = (Button) findViewById(R.id.validate_book);
         validateBook.setOnClickListener(this);
 
-        errors = (TextView) findViewById(R.id.errors);
+        showErrors = (TextView) findViewById(R.id.errors);
     }
 
     @Override
@@ -46,7 +45,29 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.validate_book:
-                System.out.println(imageURL);
+                String errors = "";
+                if(bookName.getText() == null || bookName.getText().toString().length() == 0) {
+                    errors += "Veuillez saisir un nom pour le livre...\n";
+                }
+                if(bookAuthor.getText() == null || bookAuthor.getText().toString().length() == 0) {
+                    errors += "Veuillez saisir un auteur pour le livre...\n";
+                }
+                if(bookDate.getText() == null || bookDate.getText().toString().length() == 0) {
+                    errors += "Veuillez saisir la date de 1ère parution du livre...\n";
+                }
+                if(imageURL == null) {
+                    errors += "Veuillez sélectionner une image...\n";
+                }
+
+                if(errors.length() <= 1) {
+                    Book newBook = new Book(StringUtils.generateID(), bookName.getText().toString(), bookAuthor.getText().toString(), bookDate.getText().toString(), imageURL);
+                    Intent intent = new Intent(AddBookActivity.this, MainActivity.class);
+                    intent.putExtra("newBook", newBook);
+                    startActivity(intent);
+                } else {
+                    showErrors.setText(errors);
+                    errors = "";
+                }
                 break;
 
             default:
@@ -83,13 +104,7 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
             public boolean onTouch(View v, MotionEvent event) {
                 WebView.HitTestResult hr = ((WebView)v).getHitTestResult();
                 imageURL = hr.getExtra();
-
-                if(imageURL != null) {
-                    String[] types = { ".png", ".jpg", ".gif", ".jpeg" };
-                    if(Arrays.asList(types).contains(imageURL.substring(imageURL.length() - 4, imageURL.length()))) {
-                        alert.dismiss();
-                    }
-                }
+                if(StringUtils.isAnImageURL(imageURL)) alert.dismiss();
                 return false;
             }
         });

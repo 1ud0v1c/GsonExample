@@ -18,14 +18,21 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private Gson gson = new Gson();
     private FloatingActionButton addBook;
+    private ArrayList<Book> books = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        books = buildBooksList();
+        if(getIntent().getExtras() != null) {
+            Book newBook = (Book) getIntent().getSerializableExtra("newBook");
+            books.add(newBook);
+        }
+
         ListView bookList = (ListView) findViewById(R.id.book_list);
-        bookList.setAdapter(new BookAdapter(getApplicationContext(), buildBooksList()));
+        bookList.setAdapter(new BookAdapter(getApplicationContext(), books));
 
         addBook = (FloatingActionButton) findViewById(R.id.add_book);
         addBook.setOnClickListener(new View.OnClickListener() {

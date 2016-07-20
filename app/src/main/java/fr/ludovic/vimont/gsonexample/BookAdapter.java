@@ -46,10 +46,14 @@ public class BookAdapter extends BaseAdapter {
         Book currentBook = books.get(position);
 
         final ImageView bookCover = (ImageView) convertView.findViewById(R.id.book_cover);
-        try {
-            bookCover.setImageDrawable(Drawable.createFromStream(context.getAssets().open(currentBook.getCover()), null));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(StringUtils.isAnImageURL(currentBook.getCover())) {
+            new DownloadImageTask(bookCover).execute(currentBook.getCover());
+        } else {
+            try {
+                bookCover.setImageDrawable(Drawable.createFromStream(context.getAssets().open(currentBook.getCover()), null));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         final TextView bookTitle = (TextView) convertView.findViewById(R.id.book_title);

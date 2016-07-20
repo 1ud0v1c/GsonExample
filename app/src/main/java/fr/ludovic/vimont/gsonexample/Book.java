@@ -1,6 +1,8 @@
 package fr.ludovic.vimont.gsonexample;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private String id;
     private String name;
     private String author;
@@ -10,7 +12,19 @@ public class Book {
     private String cover;
  
     public Book() {}
- 
+
+    public Book(String id, String name, String author, String releaseDate, String cover) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.releaseDate = releaseDate;
+        this.cover = cover;
+
+        genre = "Unknown";
+        numpages = -1;
+    }
+
+
     public Book(String id, String name, String author, String genre, int numpages, String releaseDate, String cover) {
         this.id = id;
         this.name = name;
@@ -20,7 +34,7 @@ public class Book {
         this.releaseDate = releaseDate;
         this.cover = cover;
     }
- 
+
     public String getId() {
         return id;
     }
